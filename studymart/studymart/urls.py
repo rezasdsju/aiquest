@@ -1,20 +1,15 @@
 
 from django.contrib import admin
-from django.urls import path
-from machine_learning.views import machine_learning
-from machine_learning.views import deep_learning
-from machine_learning.views import about_us
-from Blogs.views import blog1
-from Deep_Learning.views import deep_learning
-from Data_Analysis.views import data_analysis
-from About_Us.views import about_us
+from django.urls import path, include
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',machine_learning),
-    path('dl/', deep_learning),
-    path('about/', about_us),
-    path('blog/',blog1),
-    path('deepl/',deep_learning),
-    path('analysis/',data_analysis),
-    path('about-us/',about_us),
+    path('ml/', include('machine_learning.urls')),
+    path('about/',include('About_Us.urls')),
+    path('blog/', include('Blogs.urls')),
+    path('deep/',include('Deep_Learning.urls')),
+    path('data/', include('Data_Analysis.urls')),
+    
+
 ]
